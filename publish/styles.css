@@ -1,0 +1,188 @@
+:root{
+  --bg:#fff7fb;
+  --pastel-pink:#ffdff0;
+  --pastel-peach:#fff0e6;
+  --soft-mauve:#ff9fc9;
+  --accent:#ff6fae;
+  --muted:#6b6b6b;
+  --card-width:720px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(circle at 10% 10%, var(--pastel-pink) 0%, transparent 15%),
+              radial-gradient(circle at 90% 90%, var(--pastel-peach) 0%, transparent 15%),
+              var(--bg);
+  display:flex;align-items:flex-start;justify-content:center;padding-top:28px;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  min-height:100vh;
+}
+.scene{position:relative;width:100%;max-width:980px;padding:48px}
+.bg-kitty{position:absolute;left:50%;top:40%;transform:translate(-50%,-30%) scale(1.6);width:110%;height:auto;pointer-events:none}
+
+/* repeating Hello Kitty faces across the entire viewport */
+.bg-faces{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.28;background-image: url("./hello-kitty-face.jpg");background-repeat:repeat;background-position:center center;background-size:160px;background-attachment:fixed;filter:grayscale(0.02) saturate(1) blur(0.2px);mix-blend-mode:normal}
+.bg-faces:before{content:"";position:fixed;inset:0;background:linear-gradient(120deg, rgba(255,150,200,0.06), rgba(180,220,255,0.04));mix-blend-mode:screen;pointer-events:none}
+
+/* subtle repeating confetti background (decorative) */
+.scene:before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.28;
+  background-image: radial-gradient(#ffd7e8 6%, transparent 7%), radial-gradient(#ffe8b8 6%, transparent 7%), radial-gradient(#dff7ff 6%, transparent 7%);
+  background-size: 40px 40px, 56px 56px, 72px 72px;
+  background-position: 0 0, 10px 20px, 30px 10px;
+  filter: blur(0.6px);
+}
+
+.card{
+  position:relative;
+  z-index:6;
+  margin:0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,250,255,0.92));
+  border-radius:24px;
+  padding:36px 44px;
+  box-shadow: 0 18px 60px rgba(200,120,170,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+  text-align:center;
+  max-width:var(--card-width);
+  backdrop-filter: blur(4px) saturate(1.1);
+}
+.kitty-sprite{display:block;margin:0 auto 12px;filter:drop-shadow(0 6px 12px rgba(200,140,180,0.12));}
+.pixel-svg{image-rendering:pixelated;shape-rendering:crispEdges}
+
+.kitty-img{width:120px;height:120px;display:block;margin:0 auto 8px;border-radius:12px;object-fit:cover;filter:drop-shadow(0 8px 18px rgba(200,140,180,0.14));}
+
+.message{font-family: 'Press Start 2P', system-ui, sans-serif; font-size:28px; color:#ff6fae; text-shadow: 3px 3px 0 rgba(255,200,220,0.6); margin: 6px 0 14px}
+.sub{margin:0 auto 18px;color:var(--muted);font-size:1rem;max-width:640px;line-height:1.6}
+
+.make-wish{margin:18px 0;color:#ff6fae;font-family:'Press Start 2P';font-size:18px}
+.cake-wrap{margin:20px 0}
+.cake-wrap img{width:240px;height:240px;display:block;margin:0 auto;border-radius:10px;background:#fff;padding:16px;box-shadow:0 14px 28px rgba(200,140,180,0.10)}
+
+/* gallery below the cake */
+.gallery-below{display:flex;gap:12px;justify-content:center;margin-top:12px}
+.gallery-below .below-img{width:120px;height:120px;object-fit:cover;border-radius:8px;background:#fff;padding:8px;box-shadow:0 10px 20px rgba(200,140,160,0.08)}
+
+@media (max-width:560px){
+  .gallery-below{flex-direction:column;align-items:center}
+  .gallery-below .below-img{width:160px;height:160px}
+}
+.hearts{margin-top:8px;display:flex;gap:10px;justify-content:center}
+.heart{color:#ff9fc9;font-size:20px}
+
+/* mini cake + candles for make-a-wish */
+.wish-cake{margin-top:10px;margin-bottom:6px}
+.mini-cake{width:160px;margin:10px auto 6px;position:relative;cursor:pointer}
+.cake-layer{height:48px;background:linear-gradient(180deg,#fff5f8,#ffdbe9);border-radius:10px;padding:10px;box-shadow:0 10px 20px rgba(200,120,160,0.12);border:1px solid rgba(255,150,190,0.45);position:relative;z-index:1}
+.cake-layer:after{content:"";position:absolute;left:12px;right:12px;top:-8px;height:10px;background:linear-gradient(180deg,#fff,#ffeef6);border-radius:8px;z-index:2}
+.candles{position:absolute;left:50%;top:-20px;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
+.candle{width:10px;height:32px;background:#ffd86f;border-radius:4px;display:inline-flex;align-items:flex-start;justify-content:center;position:relative}
+.proper-cake{margin-top:14px;margin-bottom:6px}
+.proper-cake-inner{position:relative;width:320px;margin:0 auto}
+.proper-cake-img{width:320px;height:auto;display:block;border-radius:12px;box-shadow:0 18px 40px rgba(200,120,160,0.08);background:#fff;padding:12px}
+.css-cake{width:320px;height:200px;margin:0 auto;position:relative}
+.cake-plate{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);width:260px;height:18px;background:radial-gradient(ellipse at center, #fff8ea 0%, #f4e2d8 40%, #ffe6d9 100%);border-radius:50%;box-shadow:0 8px 18px rgba(200,140,160,0.08);z-index:1}
+.cake-base{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:260px;height:110px;background:linear-gradient(180deg,#ffdbe9 0%,#ffbcd6 60%);border-radius:18px;box-shadow:0 14px 30px rgba(200,120,160,0.12);z-index:2;overflow:hidden}
+.cake-icing{position:absolute;left:0;right:0;top:6px;height:34px;background:linear-gradient(180deg,#fffefb 0%,#fff1f6 100%);border-bottom-left-radius:28px;border-bottom-right-radius:28px;box-shadow:inset 0 -4px 6px rgba(255,200,220,0.2)}
+.sprinkles{position:absolute;left:18px;right:18px;top:24px;height:20px}
+.spr{display:block;position:absolute;width:6px;height:6px;border-radius:2px;transform:rotate(25deg)}
+.s1{left:24px;top:4px;background:#ff6fae}
+.s2{left:72px;top:10px;background:#ffd86f}
+.s3{left:116px;top:6px;background:#b6f0ff}
+.s4{left:168px;top:8px;background:#ffb6d9}
+.s5{left:220px;top:12px;background:#d8b6ff}
+.proper-candles{position:absolute;left:50%;top:8%;transform:translateX(-50%);display:flex;gap:16px;z-index:6}
+.pc-candle{width:12px;height:40px;background:#ffd86f;border-radius:6px;display:inline-flex;align-items:flex-start;justify-content:center;position:relative}
+.pc-candle::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:3px;height:10px;background:rgba(0,0,0,0.06);border-radius:1px}
+.pc-flame{width:12px;height:12px;border-radius:50%;background: radial-gradient(circle at 30% 30%, #fff59d 0%, #ffeb3b 30%, #ff9800 60%, #ff6f00 100%);box-shadow:0 2px 8px rgba(255,140,60,0.5);transition:transform 360ms ease, opacity 360ms ease}
+.pc-flame.blown{transform:scale(0.2) translateY(-8px);opacity:0}
+.pc-puff{position:absolute;width:28px;height:14px;border-radius:10px;background:linear-gradient(90deg, rgba(200,200,200,0.18), rgba(240,240,240,0.06));opacity:0;transform:translateY(0);transition:opacity 500ms ease, transform 500ms ease}
+.pc-puff.show{opacity:1;transform:translateY(-22px)}
+.wish-msg{position:fixed;left:50%;top:18%;transform:translateX(-50%) translateY(-10px);background:linear-gradient(90deg,#ff9fc9,#ff7fb4);color:white;padding:12px 18px;border-radius:18px;box-shadow:0 18px 36px rgba(200,120,160,0.18);opacity:0;pointer-events:none;transition:opacity 360ms ease, transform 360ms ease;z-index:120}
+.wish-msg.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.candle::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:2px;height:8px;background:rgba(0,0,0,0.06);border-radius:1px}
+.flame{width:10px;height:10px;margin-top:2px;border-radius:50%;background: radial-gradient(circle at 30% 30%, #fff59d 0%, #ffeb3b 30%, #ff9800 60%, #ff6f00 100%);box-shadow:0 2px 6px rgba(255,140,60,0.5);transition:transform 360ms ease, opacity 360ms ease}
+.flame.blown{transform:scale(0.2) translateY(-6px);opacity:0}
+.puff{position:absolute;width:22px;height:12px;border-radius:10px;background:linear-gradient(90deg, rgba(200,200,200,0.18), rgba(240,240,240,0.06));opacity:0;transform:translateY(0);transition:opacity 500ms ease, transform 500ms ease}
+.puff.show{opacity:1;transform:translateY(-18px)}
+
+.hero-art{display:flex;justify-content:center;margin-bottom:8px;position:relative;z-index:20}
+.hero-art img{width:420px;height:auto;border-radius:18px;box-shadow:0 28px 60px rgba(180,120,160,0.2);background:#fff;padding:8px;display:block;position:relative;z-index:22}
+
+.message{
+  font-size:1.9rem;margin:8px 0 6px;color:#3b2b3b;letter-spacing:0.5px;
+  font-weight:700;
+}
+.ribbon{display:inline-block;margin-left:8px;font-size:2.6rem;line-height:1;vertical-align:middle;transform:translateY(-6px)}
+.sub{margin:0;color:var(--muted);font-size:1rem}
+
+#effects{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;overflow:hidden;z-index:10}
+.confetti{position:absolute;width:10px;height:10px;background:var(--accent);opacity:0.95;border-radius:2px;transform:translateY(0);will-change:transform,opacity}
+.confetti--2{background:#ffd86f}
+.confetti--3{background:#b6f0ff}
+.balloon{position:absolute;width:26px;height:34px;border-radius:8px;background:var(--soft-mauve);box-shadow:inset -3px -6px rgba(255,255,255,0.15);will-change:transform,opacity}
+.balloon:after{content:"";position:absolute;left:50%;bottom:-6px;width:2px;height:8px;background:rgba(0,0,0,0.06);transform:translateX(-50%)}
+
+@keyframes floatUp {
+  0%{transform:translateY(12vh) translateX(0) rotate(0);opacity:1}
+  100%{transform:translateY(-10vh) translateX(30px) rotate(360deg);opacity:0}
+}
+@keyframes drift {
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0)}
+}
+
+.card{animation:drift 6s ease-in-out infinite}
+
+@media (max-width:560px){
+  .card{padding:24px;border-radius:14px}
+  .message{font-size:1.4rem}
+  .ribbon{font-size:1.8rem;transform:translateY(-3px)}
+  .cake-wrap img{width:160px;height:160px}
+  .proper-cake-inner{width:220px}
+  .proper-cake-img{width:220px}
+  .proper-candles{gap:10px;top:6%}
+  .pc-candle{width:10px;height:30px}
+  .pc-flame{width:10px;height:10px}
+  .css-cake{width:220px;height:160px}
+  .cake-base{width:180px;height:90px;bottom:20px}
+  .cake-plate{width:160px}
+}
+
+/* Floating action buttons */
+.fab{position:fixed;width:64px;height:64px;border-radius:999px;border:none;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ff9fc9,#ff6fae);color:white;font-size:20px;box-shadow:0 12px 28px rgba(180,120,160,0.18);cursor:pointer;z-index:70}
+.fab:active{transform:scale(0.96)}
+.fab.clicked{transform:scale(0.96);box-shadow:0 8px 18px rgba(180,120,160,0.12)}
+.fab-left{left:24px;bottom:40px}
+.fab-right{right:24px;bottom:40px}
+.music-control{position:fixed;right:20px;bottom:20px;z-index:60}
+.tooltip{position:fixed;right:92px;bottom:52px;background:linear-gradient(90deg,#ff7fb4,#ff5fa0);color:#fff;padding:8px 14px;border-radius:20px;box-shadow:0 10px 22px rgba(0,0,0,0.08)}
+.tooltip:after{content:"";position:absolute;right:12px;bottom:-6px;width:12px;height:12px;background:linear-gradient(90deg,#ff7fb4,#ff5fa0);transform:rotate(45deg);box-shadow:0 10px 22px rgba(0,0,0,0.02)}
+
+/* autoplay overlay shown when browser blocks autoplay — themed to match site */
+.autoplay-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,248,250,0.85), rgba(255,245,250,0.6));backdrop-filter: blur(4px);z-index:140}
+.autoplay-card{display:flex;flex-direction:column;align-items:center;gap:12px;padding:22px 28px;border-radius:16px;box-shadow:0 18px 40px rgba(200,120,160,0.12);background:linear-gradient(90deg,#fff,#fff)}
+.autoplay-play{font-family:'Press Start 2P', Inter, sans-serif;background:linear-gradient(90deg,#ff9fc9,#ff6fae);color:white;border:none;padding:12px 18px;border-radius:12px;font-size:16px;cursor:pointer}
+.autoplay-text{color:var(--muted);font-size:13px}
+
+/* left confetti bubble */
+.confetti-bubble{position:fixed;left:92px;bottom:48px;background:linear-gradient(90deg,#b57bff,#ff9fe6);color:#fff;padding:10px 14px;border-radius:20px;box-shadow:0 12px 30px rgba(170,110,160,0.12);z-index:62;display:flex;align-items:center;gap:8px}
+.confetti-bubble:after{content:"";position:absolute;left:10px;bottom:-6px;width:12px;height:12px;background:linear-gradient(90deg,#b57bff,#ff9fe6);transform:rotate(45deg)}
+/* make the bubble non-interactive so it doesn't intercept clicks (avoids visual glitch) */
+.confetti-bubble{pointer-events:none}
+
+/* decorative background confetti pieces (animated) */
+.bg-confetti{position:absolute;width:8px;height:8px;background:var(--accent);opacity:0.85;border-radius:2px;transform:translateY(0);will-change:transform,opacity;z-index:2}
+.bg-confetti.small{width:6px;height:6px;opacity:0.7}
+.bg-confetti.tiny{width:4px;height:4px;opacity:0.6}
+.bg-confetti.yellow{background:#ffd86f}
+.bg-confetti.blue{background:#b6f0ff}
+.bg-confetti.pink{background:#ffb6d9}
+.bg-confetti.animate{animation: driftSlow linear infinite}
+@keyframes driftSlow{from{transform:translateY(0) translateX(0) rotate(0);opacity:1}to{transform:translateY(-120vh) translateX(30px) rotate(360deg);opacity:0}}
+
+/* subtle kitty pattern on the sides */
+.scene:before,.scene:after{content:"";position:absolute;top:0;bottom:0;width:22%;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);pointer-events:none}
+.scene:before{left:0}
+.scene:after{right:0}
